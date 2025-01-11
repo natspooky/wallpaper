@@ -1,0 +1,140 @@
+:root {
+	--themecol: #4c64ba;
+
+	--bgColor-default: #0d1117;
+	--bgColor-muted: #161b22;
+	--bgColor-inset: #010409;
+
+	--fgColor-default: #e6edf3;
+	--fgColor-muted: #848d97;
+	--fgColor-onEmphasis: #ffffff;
+
+	--borderColor: #30363db3;
+	--borderColor-default: #30363d;
+	--borderColor-muted: #30363db3;
+	--borderColor-emphasis: #484f58;
+
+	--SSC: #8157de;
+	--PDS: #489ed4;
+	--CLS: #21cc8a;
+	--VPS: #6467ff;
+	--PSS: #ff4f4f;
+	--CMS: #ff9e49;
+	--GIS: #fc64ff;
+	--CDS: #000;
+	--SSM: #000;
+
+	--CELLAR: #ab6e38;
+	--ARCHIVE: #bd9351;
+	--ARC: #4192c4;
+
+	--angle-offset: 0deg;
+	--stop: 72.71%;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	position: relative;
+}
+html,
+body {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	background-color: #000;
+}
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+body .background-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #000;
+}
+body .background-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	background-color: #000;
+	transition: 3s;
+}
+body.loaded .background-container::after {
+	opacity: 0;
+}
+body .background-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0px;
+	overflow: hidden;
+	background-color: var(--bgColor-inset);
+}
+body .background-container span {
+	position: absolute;
+	width: 100vmax;
+	height: 100vmax;
+	background-color: var(--bgColor-default);
+	background-image: linear-gradient(
+			calc(217deg + var(--angle-offset)),
+			rgba(255, 50, 50, 0.8),
+			rgba(255, 50, 50, 0) var(--stop)
+		),
+		linear-gradient(
+			calc(127deg + var(--angle-offset)),
+			rgba(68, 255, 68, 0.8),
+			rgba(68, 255, 68, 0) var(--stop)
+		),
+		linear-gradient(
+			calc(336deg + var(--angle-offset)),
+			rgba(62, 62, 255, 0.8),
+			rgba(62, 62, 25, 0) var(--stop)
+		);
+}
+body .background-container div {
+	position: absolute;
+	width: 40vmin;
+	height: 40vmin;
+	border-radius: 50%;
+	background-color: #ffffff12;
+	mask: url(https://natski.netlify.app/ENCORE/dependencies/GIS_icons/NATSKI.svg)
+			center no-repeat,
+		linear-gradient(#000 0 0);
+
+	mask-composite: exclude;
+	mask-size: 30vmin 30vmin;
+	animation: rotate 10s linear infinite;
+}
+svg {
+	position: absolute;
+	height: 30vmin;
+	width: 30vmin;
+	fill: #ffffff15;
+	transform: rotate(0deg);
+
+	animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
