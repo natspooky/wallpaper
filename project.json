@@ -2,6 +2,9 @@
 	"contentrating": "Everyone",
 	"description": "yummy",
 	"file": "index.html",
+	"general": {
+		"supportsaudioprocessing": true
+	},
 	"preview": "lib/img/natski.png",
 	"tags": ["RGB"],
 	"title": "NATSKI",

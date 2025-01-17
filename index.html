@@ -26,6 +26,49 @@
 		</div>
 -->
 		<script type="text/javascript" src="lib/js/main.js"></script>
+		<script type="text/javascript" src="lib/js/canvas.js"></script>
+		<script>
+			let anvas = new canvas(document.getElementById('particle'), {
+				fps: 360,
+				autoResize: true,
+				useCursor: true,
+				autoClear: true,
+			});
+
+			let part = new Particles({ particles: 100 });
+			let i = 0,
+				ac = 0;
+			anvas.draw(function (data) {
+				/*console.log(part.particles());
+				for (const particle of part.particles()) {
+					particle.step();
+					let pos = particle.pos();
+					data.ctx.beginPath();
+					data.ctx.arc(pos.x, pos.y, 40, 0, 2 * Math.PI);
+					data.ctx.stroke();
+				}*/
+
+				let val = 0.8 * data.fps.animationMult;
+
+				i += val;
+
+				if (i > 1) {
+					ac -= val;
+				} else {
+					ac = i;
+				}
+				if (ac < 0) {
+					i = 0;
+				}
+				console.log(ac, i);
+				data.ctx.strokeStyle = `rgba(255,255,255,${ac})`;
+				data.ctx.lineWidth = 10;
+
+				data.ctx.beginPath();
+				data.ctx.arc(data.cursor.x, data.cursor.y, 40, 0, 2 * Math.PI);
+				data.ctx.stroke();
+			});
+		</script>
 	</body>
 </html>
 

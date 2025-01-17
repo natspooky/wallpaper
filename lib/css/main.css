@@ -120,6 +120,12 @@ body .background-container div {
 	mask-size: 30vmin 30vmin;
 	animation: rotate 10s linear infinite;
 }
+
+body .background-container canvas {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+}
 svg {
 	position: absolute;
 	height: 30vmin;
