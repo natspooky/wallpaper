@@ -29,7 +29,7 @@
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
 			let anvas = new canvas(document.getElementById('particle'), {
-				fps: 360,
+				fps: 10000,
 				autoResize: true,
 				useCursor: true,
 				autoClear: true,
@@ -60,7 +60,7 @@
 				if (ac < 0) {
 					i = 0;
 				}
-				console.log(ac, i);
+
 				data.ctx.strokeStyle = `rgba(255,255,255,${ac})`;
 				data.ctx.lineWidth = 10;
 
