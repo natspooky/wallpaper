@@ -29,7 +29,7 @@
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
 			let anvas = new canvas(document.getElementById('particle'), {
-				fps: 10000,
+				fps: 120,
 				autoResize: true,
 				useCursor: true,
 				autoClear: true,
@@ -38,16 +38,8 @@
 			let part = new Particles({ particles: 100 });
 			let i = 0,
 				ac = 0;
-			anvas.draw(function (data) {
-				/*console.log(part.particles());
-				for (const particle of part.particles()) {
-					particle.step();
-					let pos = particle.pos();
-					data.ctx.beginPath();
-					data.ctx.arc(pos.x, pos.y, 40, 0, 2 * Math.PI);
-					data.ctx.stroke();
-				}*/
 
+			anvas.draw(function (data) {
 				let val = 0.8 * data.fps.animationMult;
 
 				i += val;
@@ -65,8 +57,15 @@
 				data.ctx.lineWidth = 10;
 
 				data.ctx.beginPath();
-				data.ctx.arc(data.cursor.x, data.cursor.y, 40, 0, 2 * Math.PI);
+				data.ctx.arc(
+					data.cursor.pos.x,
+					data.cursor.pos.y,
+					40,
+					0,
+					2 * Math.PI,
+				);
 				data.ctx.stroke();
+				console.log(data.fps.current, data.fps.delta);
 			});
 		</script>
 	</body>
