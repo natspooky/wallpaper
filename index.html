@@ -45,6 +45,13 @@
 			});
 
 			test.draw(function (data) {
+				testStuff(data);
+
+				part.step();
+				part.draw(data.ctx, data.fps.animationMult);
+			});
+
+			function testStuff(data) {
 				let val = 0.8 * data.fps.animationMult;
 
 				i += val;
@@ -70,10 +77,7 @@
 					2 * Math.PI,
 				);
 				data.ctx.stroke();
-
-				part.step();
-				part.draw(data.ctx, ac);
-			});
+			}
 		</script>
 	</body>
 </html>
