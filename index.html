@@ -28,27 +28,19 @@
 		<script type="text/javascript" src="lib/js/main.js"></script>
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
-			let part;
 			let i = 0,
 				ac = 0;
 
 			let test = new canvas(document.getElementById('particle'), {
-				fps: 120,
+				fps: 360,
 				autoResize: true,
 				useCursor: true,
 				autoClear: true,
-				//size: { x: 300, y: 300 },
-			});
-
-			part = new Particles(document.getElementById('particle'), {
-				particles: 50,
+				//size: { x: 200, y: 4000 },
 			});
 
 			test.draw(function (data) {
 				testStuff(data);
-
-				part.step();
-				part.draw(data.ctx, data.fps.animationMult);
 			});
 
 			function testStuff(data) {
@@ -64,7 +56,7 @@
 				if (ac < 0) {
 					i = 0;
 				}
-
+				console.log(data.fps.current);
 				data.ctx.strokeStyle = `rgba(255,255,255,${ac})`;
 				data.ctx.lineWidth = 10;
 
