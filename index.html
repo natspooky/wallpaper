@@ -8,8 +8,9 @@
 	<body>
 		<div class="background-container">
 			<span></span>
-			<canvas id="particle"></canvas>
+
 			<div></div>
+			<canvas id="particle"></canvas>
 		</div>
 
 		<!--
@@ -28,48 +29,18 @@
 		<script type="text/javascript" src="lib/js/main.js"></script>
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
-			let i = 0,
-				ac = 0;
-
-			let test = new canvas(document.getElementById('particle'), {
-				fps: 360,
+			let test = new s_canvas(document.getElementById('particle'), {
+				fps: 144,
 				autoResize: true,
 				useCursor: true,
 				autoClear: true,
-				//size: { x: 200, y: 4000 },
+				//resolution: { x: 200, y: 500 },
 			});
 
 			test.draw(function (data) {
-				testStuff(data);
+				data.ctx.fillStyle = 'green';
+				data.ctx.fillRect(10, 10, 150, 100);
 			});
-
-			function testStuff(data) {
-				let val = 0.8 * data.fps.animationMult;
-
-				i += val;
-
-				if (i > 1) {
-					ac -= val;
-				} else {
-					ac = i;
-				}
-				if (ac < 0) {
-					i = 0;
-				}
-				console.log(data.fps.current);
-				data.ctx.strokeStyle = `rgba(255,255,255,${ac})`;
-				data.ctx.lineWidth = 10;
-
-				data.ctx.beginPath();
-				data.ctx.arc(
-					data.cursor.pos.x,
-					data.cursor.pos.y,
-					40,
-					0,
-					2 * Math.PI,
-				);
-				data.ctx.stroke();
-			}
 		</script>
 	</body>
 </html>
