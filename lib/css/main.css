@@ -125,8 +125,8 @@ body .background-container div {
 body .background-container canvas {
 	position: absolute;
 
-	width: 50vw;
-	height: 50vh;
+	width: 100vw;
+	height: 100vh;
 }
 svg {
 	position: absolute;
