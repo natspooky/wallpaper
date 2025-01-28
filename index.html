@@ -34,13 +34,39 @@
 				fps: 120,
 				autoResize: true,
 				useCursor: true,
+				useKey: true,
 				autoClear: true,
+				devInfo: true,
 				//fixedaspectratio
 				//resolution: { x: 500, y: 320 },
 			});
 
+			test.scaleCanvas(2, 2);
+			test.translateCanvas(20, 20);
+
 			test.draw(function (data) {
-				console.log(Math.floor(data.time * 10) / 10);
+				data.ctx.strokeRect(0, 0, test.width, test.height);
+				test.setColor('d0f');
+				console.log(
+					data.key.value.special.ctrl,
+					data.key.value.special.alt,
+					data.key.value.special.shift,
+					data.key.value.current,
+					data.key.value.prev,
+					data.key.events.pressed,
+					data.cursor.position,
+					data.cursor.events.hover,
+					data.cursor.events.pressed,
+					data.resolution,
+					data.fps,
+				);
+
+				data.ctx.fillRect(
+					data.cursor.position.x - 5,
+					data.cursor.position.y - 5,
+					10,
+					10,
+				);
 			});
 		</script>
 	</body>
