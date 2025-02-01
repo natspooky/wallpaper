@@ -6,13 +6,13 @@
 		<link rel="stylesheet" href="lib/css/main.css" />
 	</head>
 	<body>
-		<div class="background-container">
+		<!--<div class="background-container">
 			<span></span>
 
 			<div></div>
 
 			<canvas id="particle"></canvas>
-		</div>
+		</div>-->
 
 		<!--
 		<div class="content-container">
@@ -30,8 +30,25 @@
 		<script type="text/javascript" src="lib/js/main.js"></script>
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
-			let test = new s_canvas(document.getElementById('particle'), {
-				fps: 60,
+			function grid(data) {
+				let val = 100;
+				for (let i = 0; i < data.resolution.x; i += val) {
+					data.ctx.beginPath();
+					data.ctx.moveTo(i, 0);
+					data.ctx.lineTo(i, data.resolution.y);
+					data.ctx.stroke();
+				}
+
+				for (let i = 0; i < data.resolution.y; i += val) {
+					data.ctx.beginPath();
+					data.ctx.moveTo(0, i);
+					data.ctx.lineTo(data.resolution.x, i);
+					data.ctx.stroke();
+				}
+			}
+
+			let test = s_canvas.create('#particle', {
+				fps: 360,
 				autoResize: true,
 				resizeFunc: '',
 				useCursor: true,
@@ -39,11 +56,15 @@
 				autoClear: true,
 				canvasInfo: true,
 				//fixedaspectratio
-				//resolution: { x: 1000, y: 1000 },
+				resolution: { x: 600, y: 600 },
 			});
 
+			document.body.appendChild(test.canvas);
 			test.draw(function (data) {
-				//
+				test.setColor('#fff');
+				grid(data);
+
+				/*
 
 				console.log(
 					data.cursor.position,
@@ -54,7 +75,7 @@
 					data.fps,
 					data.transform.scale,
 					data.transform.translate,
-				);
+				);*/
 				/*
 							console.clear();
 
