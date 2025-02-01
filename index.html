@@ -31,7 +31,7 @@
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
 			let test = new s_canvas(document.getElementById('particle'), {
-				fps: 360,
+				fps: 60,
 				autoResize: true,
 				resizeFunc: '',
 				useCursor: true,
@@ -42,20 +42,10 @@
 				//resolution: { x: 1000, y: 1000 },
 			});
 
-			test.scaleCanvas(1.2, 1.2);
-			test.scaleCanvas(5, 2);
-			test.scaleCanvas(0.1, 2);
-
 			test.draw(function (data) {
-				//data.function.setColor('d0f');
+				//
 
 				console.log(
-					data.key.value.special.ctrl,
-					data.key.value.special.alt,
-					data.key.value.special.shift,
-					data.key.value.current,
-					data.key.value.previous,
-					data.key.events.pressed,
 					data.cursor.position,
 					data.cursor.events.hover,
 					data.cursor.events.pressed,
