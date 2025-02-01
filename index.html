@@ -31,16 +31,18 @@
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
 			let test = new s_canvas(document.getElementById('particle'), {
-				fps: 200,
+				fps: 360,
 				autoResize: true,
-				resizeFunc:,
+				resizeFunc: '',
 				useCursor: true,
 				useKeys: true,
-				autoClear: false,
-				canvasInfo: false,
+				autoClear: true,
+				canvasInfo: true,
 				//fixedaspectratio
 				//resolution: { x: 1000, y: 1000 },
 			});
+
+			test.translateCanvas(200, 200);
 
 			test.draw(function (data) {
 				//data.function.setColor('d0f');
@@ -58,6 +60,8 @@
 					data.cursor.events.moving,
 					data.resolution,
 					data.fps,
+					data.transform.scale,
+					data.transform.translate,
 				);
 				/*
 							console.clear();
@@ -220,11 +224,6 @@
 						Math.PI * 2,
 					);
 					data.ctx.fill();
-				}
-
-				if (data.key.events.pressed) {
-					if (data.key.value.current == 'ArrowUp') {
-					}
 				}
 			});
 		</script>
