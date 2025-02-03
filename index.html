@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="lib/css/main.css" />
 	</head>
 	<body>
+		<canvas id="burger"></canvas>
 		<!--<div class="background-container">
 			<span></span>
 
@@ -30,14 +31,14 @@
 		<script type="text/javascript" src="lib/js/main.js"></script>
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
-			let test = s_canvas.create('#burger', {
-				fps: 30,
+			let test = new s_canvas(document.getElementById('burger'), {
+				fps: 5,
 				resizeFunc: '',
 				useCursor: true,
 				useKeys: true,
 				autoClear: true,
 				canvasInfo: true,
-				resolution: { x: 600, y: 600 },
+				//resolution: { x: 300, y: 300 },
 				//fixedaspectratio
 			});
 
@@ -77,9 +78,13 @@
 				project() {}
 			}
 
-			test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
+			test.setup(function () {
+				test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
 
-			test.translateCanvas(1, -1);
+				console.log(test.resolution);
+
+				test.translateCanvas(1, -1);
+			});
 
 			test.draw(function (data) {
 				test.setColor('#fff');
@@ -276,7 +281,7 @@
 					data.ctx.arc(
 						data.cursor.position.x,
 						data.cursor.position.y,
-						0.01,
+						0.05,
 						0,
 						Math.PI * 2,
 					);
