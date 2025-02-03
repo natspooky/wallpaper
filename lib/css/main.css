@@ -128,6 +128,11 @@ body .background-container canvas {
 	width: 100vw;
 	height: 100vh;
 }
+canvas {
+	background-color: #30363d;
+	width: 100%;
+	height: 50%;
+}
 svg {
 	position: absolute;
 	height: 30vmin;
