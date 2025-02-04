@@ -78,11 +78,17 @@
 				project() {}
 			}
 
-			test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
+			test.transforms(function () {
+				//sync this with the resize functions to make sure that transforms are always based on the accurate scale ofg the canvas
+			});
 
-			console.log(test.resolution);
+			test.setup(function () {
+				test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
 
-			test.translateCanvas(1, -1);
+				console.log(test.resolution);
+
+				test.translateCanvas(1, -1);
+			});
 
 			test.draw(function (data) {
 				test.setColor('#fff');
