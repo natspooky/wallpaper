@@ -78,13 +78,11 @@
 				project() {}
 			}
 
-			test.setup(function () {
-				test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
+			test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
 
-				console.log(test.resolution);
+			console.log(test.resolution);
 
-				test.translateCanvas(1, -1);
-			});
+			test.translateCanvas(1, -1);
 
 			test.draw(function (data) {
 				test.setColor('#fff');
