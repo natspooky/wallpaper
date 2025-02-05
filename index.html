@@ -7,12 +7,13 @@
 	</head>
 	<body>
 		<canvas id="burger"></canvas>
+		<!--
 		<div class="background-container">
 			<span></span>
 
 			<div></div>
 		</div>
-
+		-->
 		<!--
 		<div class="content-container">
 			<div>
@@ -30,14 +31,13 @@
 		<script type="text/javascript" src="lib/js/canvas.js"></script>
 		<script>
 			let test = new s_canvas(document.getElementById('burger'), {
-				fps: 5,
-				resizeFunc: '',
+				fps: 120,
+
 				useCursor: true,
 				useKeys: true,
 				autoClear: true,
 				canvasInfo: true,
-				//resolution: { x: 300, y: 300 },
-				//fixedaspectratio
+				//resolution: { x: 200, y: 200 },
 			});
 
 			//document.body.appendChild(test.canvas);
@@ -76,11 +76,17 @@
 				project() {}
 			}
 
-			test.transforms(function () {
-				//sync this with the resize functions to make sure that transforms are always based on the accurate scale ofg the canvas
-			});
+			//test.transforms(function () {
+			//sync this with the resize functions to make sure that transforms are always based on the accurate scale ofg the canvas
+			//});
 
-			test.setup(function () {
+			test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
+
+			test.translateCanvas(1, -1);
+
+			test.resize(function () {
+				test.resetCanvasTransform();
+
 				test.scaleCanvas(test.resolution.x / 2, -test.resolution.y / 2);
 
 				console.log(test.resolution);
